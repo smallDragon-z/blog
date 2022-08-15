@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { ironOptions } from 'config/index';
-import { ISession } from 'pages/api/index';
+import { ISession } from 'pages/api';
 import { prepareConnection } from 'db/index';
 import { User, Article, Tag } from 'db/entity/index';
 import { EXCEPTION_ARTICLE } from 'pages/api/config/codes';
@@ -11,6 +11,8 @@ export default withIronSessionApiRoute(publish, ironOptions);
 async function publish(req: NextApiRequest, res: NextApiResponse) {
   const session: ISession = req.session;
   const { title = '', content = '', tagIds = [] } = req.body;
+  console.log(title);
+  console.log(content);
   const db = await prepareConnection();
   const userRepo = db.getRepository(User);
   const articleRepo = db.getRepository(Article);
