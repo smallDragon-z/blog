@@ -60,9 +60,13 @@ const Navbar: NextPage = () => {
           data-warden-container
           data-warden-title="登录模块"
           data-warden-event-id="login"
+          data-warden-d="d"
+          data-warden-c="c"
+          data-warden-b="b"
+          data-warden-a="a"
         >
-          <div data-warden-a="a">
-            <div data-warden-b="b">
+          <div>
+            <div>
               <div>
                 <Button type="primary">111122233</Button>
               </div>

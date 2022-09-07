@@ -58,7 +58,7 @@ const initWeb = ()=>{
       requestUrl: 'http://localhost:3000/api/info/getInfo',
       appName: 'chengxh',
       event: true,
-      // performance: false,
+      performance: false,
       pv: true,
       error: true,
     })
