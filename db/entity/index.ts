@@ -1,5 +1,7 @@
-export { User } from './user';
-export { UserAuth } from './userAuth';
-export { Comment } from './comment';
-export { Article } from './article';
-export { Tag } from './tag';
+export { User } from './user'
+export { UserAuth } from './userAuth'
+export { Comment } from './comment'
+export { Article } from './article'
+export { Tag } from './tag'
+export { LoginLog } from './loginlog'
+export { LogoutLog } from './logoutlog'

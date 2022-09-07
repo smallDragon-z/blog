@@ -1,8 +1,15 @@
-import '../styles/globals.css';
+import { NextPage } from 'next';
 import { StoreProvider } from 'store/index';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Layout from 'components/layout';
-import { NextPage } from 'next';
+import '../styles/globals.css';
+import Script from 'next/script';
+
+declare global{
+ export interface Window{
+   webtracing:any
+  }
+}
 
 interface IProps {
   initialValue: Record<any, any>;
@@ -45,6 +52,19 @@ export function reportWebVitals(mertic: any) {
   }
 }
 function MyApp({ initialValue, Component, pageProps }: IProps) {
+const initWeb = ()=>{
+  if(window.webtracing){
+    window.webtracing.init({
+      requestUrl: 'http://localhost:3000/api/info/getInfo',
+      appName: 'chengxh',
+      event: true,
+      // performance: false,
+      pv: true,
+      error: true,
+    })
+  }
+}
+
   const renderLayout = () => {
     if ((Component as any).layout === null) {
       return <Component {...pageProps} />;
@@ -56,19 +76,22 @@ function MyApp({ initialValue, Component, pageProps }: IProps) {
       );
     }
   };
-
   return (
+  <div>
+    <Script src='https://cdn.jsdelivr.net/npm/web-tracing' strategy='afterInteractive' onLoad={()=>{
+      initWeb()
+    }}></Script>
     <ErrorBoundary>
       <StoreProvider initialValue={initialValue}>
         {renderLayout()}
       </StoreProvider>
     </ErrorBoundary>
+  </div>
   );
 }
 
 MyApp.getInitialProps = async ({ ctx }: { ctx: any }) => {
   const { userId, nickname, avatar } = ctx?.req?.cookies || {};
-
   return {
     initialValue: {
       user: {
