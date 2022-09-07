@@ -31,7 +31,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.44"
+    "typeorm": "^0.2.44",
+    "web-tracing": "^10.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -44,6 +45,7 @@
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "^8.9.0",
     "eslint-config-next": "12.0.10",
+    "prettier": "^2.7.1",
     "sass": "^1.49.7",
     "stylelint": "^14.5.0",
     "stylelint-config-standard-scss": "^3.0.0",
